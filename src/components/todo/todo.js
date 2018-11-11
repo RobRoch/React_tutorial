@@ -36,7 +36,7 @@ function Input(props) {
     return (
         <div>
             <input type='text' value={props.userInput} onChange={props.handleTyping}/>
-            <button onClick={props.handleSubmit}>Submit</button>
+            <input type='submit' value='Submit' onClick={props.handleSubmit} />
         </div>
     );
 }
