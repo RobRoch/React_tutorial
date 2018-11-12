@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../../scss/todo.scss';
 
 export default class ToDo extends React.Component {
     constructor(props) {
@@ -24,9 +24,12 @@ export default class ToDo extends React.Component {
     }
     render() {
         return (
-            <div>
-                <Input userInput={this.state.userInput} handleTyping={this.handleTyping} handleSubmit={this.handleSubmit}/>
-                <ToDoList list={this.state.list}/>
+            <div className='todo__section section'>
+                <div className='todo__wrapper wrapper'>
+                    <h1 className='todo__header header'>First task: Todo app</h1>
+                    <Input userInput={this.state.userInput} handleTyping={this.handleTyping} handleSubmit={this.handleSubmit}/>
+                    <ToDoList list={this.state.list}/>
+                </div>
             </div>
         )
     }
@@ -34,17 +37,17 @@ export default class ToDo extends React.Component {
 
 function Input(props) {
     return (
-        <div>
-            <input type='text' value={props.userInput} onChange={props.handleTyping}/>
-            <input type='submit' value='Submit' onClick={props.handleSubmit} />
+        <div className='todo__input'>
+            <input className='todo__input__field' type='text' value={props.userInput} onChange={props.handleTyping}/>
+            <input className='todo__input__submit' type='submit' value='Submit' onClick={props.handleSubmit} />
         </div>
     );
 }
 
 function ToDoList(props) {
-    const list = props.list.map((one,index) => <li key={index}>{one}</li>);
+    const list = props.list.map((one,index) => <li key={index} className='todo__list__data'>{one}</li>);
     return (
-        <ul>
+        <ul className='todo__list'>
             {list}
         </ul>
     );

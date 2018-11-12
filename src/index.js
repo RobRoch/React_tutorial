@@ -1,15 +1,16 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import ToDo from './components/todo/todo.js';
+import Calculator from './components/calculator/calculator.js';
+import './scss/style.scss';
 
 class App extends React.Component {
     render() {
         return(
             <div>
-                <h1>Todo app</h1>
+                <Calculator/>
                 <ToDo/>
-                <br/>
-                <h2>Calculator</h2>
+                
             </div>
         )
     }

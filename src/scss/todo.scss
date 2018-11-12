@@ -1,0 +1,34 @@
+.todo__input {
+    display:flex;
+    flex-direction:column;
+    width:50%;
+    margin-left:auto;
+    margin-right:auto;
+    .todo__input__field {
+        margin: 20px 0 20px 0;
+        font-size:20px;
+        transition:0.1s all;
+        padding:5px;
+        &:focus {
+            border-color:red;
+            outline:none;
+        }
+    }
+    .todo__input__submit {
+        background:#fff;
+        border: 1px solid #000;
+        border-radius:20px;
+        font-size:20px;
+        cursor:pointer;
+        outline:none;
+        
+    }
+}
+.todo__list {
+    list-style:decimal;
+    .todo__list__data {
+        font-size:20px;
+        font-weight:600;
+        margin:0 0 5px 0;
+    }
+}
