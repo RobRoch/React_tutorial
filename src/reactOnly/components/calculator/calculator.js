@@ -63,11 +63,10 @@ export default class Calculator extends React.Component {
                 <div className='calculator__wrapper wrapper'>
                     <h1 className='calculator__header header'>Second task: Simple calculator</h1>
                     <View view={this.state.view} />
-                    <div class='calculator__clickable'>
+                    <div className='calculator__clickable'>
                         <Numbers handleNumber={this.handleNumber}/>
                         <Submit handleSubmit={this.handleSubmit} />
-                        <Operators handleOperator={this.handleOperator} operators={this.operators}/>
-                        
+                        <Operators handleOperator={this.handleOperator} operators={this.operators}/>   
                     </div>
                 </div>
             </div>
