@@ -2,10 +2,66 @@
 .shop__section {
     background:#eee;
     display:flex;
-    .items__section {
-        
+    .shop__header {
+        text-align:center;
     }
-    .cart__section {
-
+    .shop__wrapper {
+        display:flex;
+    }
+    .items__section {
+        flex-basis:50%;
+        display:flex;
+        .item__wrapper {
+            display:flex;
+            .item__spec {
+                flex-basis:70%;
+            }
+            .item__count {
+                flex-grow:1;
+                border-left: 1px dotted #000;
+            }
+        }
+        .items{
+            flex-basis:50%;
+            flex-grow:1;
+            .item__title {
+                text-align:center;
+            }
+            .item {
+                width:200px;
+                margin-left:auto;
+                margin-right:auto;
+                margin-top:5px;
+                margin-bottom:5px;
+                border: 1px solid #000;
+                padding:5px;
+                p {
+                    margin:0;
+                    text-align:center;
+                }
+                .item__remove {
+                    position:absolute;
+                    cursor:pointer;
+                    border:1px solid #000;
+                    color:#000;
+                    padding:2px;
+                    transition:0.3s all;
+                    &:hover {
+                        background: #000;
+                        color:#fff;
+                    }
+                }
+                .item__button {
+                    background:none;
+                    border:1px solid #000;
+                    transition:0.3s all;
+                    cursor:pointer;
+                    &:hover {
+                        background:#000;
+                        color:#fff;
+                    }
+                }
+            }
+        }
     }
 }

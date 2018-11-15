@@ -7,10 +7,14 @@ export default class Shop extends React.Component {
     
     render() {
         return(
-        <div className='shop__section'>
-            <Items />
-            <Cart />
+        <div className='shop__section section'>
+            <h1 className='shop__header'>Third task: Redux shop</h1>
+            <div className='shop__wrapper'>
+                <Items />
+                <Cart />
+            </div>
         </div>
         )
     }
 }
+

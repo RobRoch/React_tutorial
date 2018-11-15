@@ -1,33 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../actions/store/storeItems'
+import { createList } from '../helpers/createItemsList'
+import * as actions from '../actions/storeItems'
 
 export class Items extends Component {
   
   render() {
+    let items = createList(this.props.normalItems);
+    let promoItems = createList(this.props.promoItems);
 
-    let items = this.props.normalItems.map(item=>
-      <div key={item.id}>
-        <p>{item.title}</p>
-        <p>{item.cost}</p>
-        <button>Add</button>
-      </div>
-    );
-    let promoItems = this.props.promoItems.map(item=>
-      <div key={item.id}>
-        <p>{item.title}</p>
-        <p>{item.cost}</p>
-        <button>Add</button>
-      </div>
-    );
-    // let promoItems = this.props.promoItems;
-    
     return (
       <div className='items__section'>
-        <div className='items__normal'>
+        <div className='items'>
+          <h2 className='item__title'>Ubiór</h2>
           {items}
         </div>
-        <div className='items__promo'>
+        <div className='items'>
+          <h2 className='item__title'>Promocje</h2>
           {promoItems}
         </div>
       </div>

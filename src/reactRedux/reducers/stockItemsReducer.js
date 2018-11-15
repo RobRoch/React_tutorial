@@ -2,7 +2,7 @@ const mockStockItems = [
     {
         id: 1,
         title: 'Kurtka',
-        cost: 14
+        cost: 14,
     },
     {
         id: 2,
@@ -37,10 +37,27 @@ const mockPromoItems = [
         cost: 1000
     }
 ]
+const mockCartItems = [
+    {
+        id: 8,
+        title: 'Klapki',
+        cost: 2,
+        count: 3,
+        cartCount: 2
+    },
+    {
+        id: 9,
+        title: 'Skarpetki',
+        cost: 5,
+        count:0,
+        cartCount: 1
+    }
+]
 
 const initialState = {
     normalItems: mockStockItems,
-    promoItems: mockPromoItems
+    promoItems: mockPromoItems,
+    cartItems: mockCartItems,
 }
 
 

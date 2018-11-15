@@ -1,4 +1,4 @@
 export const removeItemFromCart = (payload) => ({
-  type: type,
-  payload
-})
+    type: 'REMOVE_FROM_CART',
+    payload
+});
