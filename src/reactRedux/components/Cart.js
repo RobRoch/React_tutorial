@@ -38,8 +38,7 @@ export class Cart extends Component {
         <div className='items'>
           <h2 className='item__title'>Mój Koszyk</h2>
           <h3 className='item__title'>Suma: {sum} zł</h3>
-          {cartItems}
-          
+            {cartItems}
         </div>
       </div>
     )

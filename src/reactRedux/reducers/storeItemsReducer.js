@@ -1,4 +1,3 @@
-import * as store from '../actions/storeItems';
 import * as cart from '../actions/cartItems';
 
 const mockStockItems = [

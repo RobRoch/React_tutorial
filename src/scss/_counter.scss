@@ -1,0 +1,66 @@
+.fourth__header {
+  text-align:center;
+  
+}
+.fourth__wrapper {
+  display:flex;
+  align-content: space-between;
+
+  .counter__part {
+    margin-right:50px;
+    .counter__view {
+      font-size:20px;
+      text-align:center;
+      font-weight:600;
+      color:darkorange;
+    }
+    .counter__button__wrapper {
+      display:flex;
+      justify-content:center;
+      .counter__button {
+      
+        border-width: 2px;
+        border-style: solid;
+        padding: 5px 10px;
+        cursor:pointer;
+        transition: 0.3s all;
+        &.add {
+          border-color: green;
+          color: green;
+          &:hover {
+            color: #fff;
+            background: green;
+          }
+        }
+        &.remove {
+          margin:0 5px;
+          border-color: red;
+          color: red;
+          &:hover {
+            color: #fff;
+            background: red;
+          }
+        }
+        &.reset {
+          border-color: grey;
+          color: grey;
+          &:hover {
+            color: #fff;
+            background: grey;
+          }
+        }
+      }
+    }
+    
+  }
+  .users__part {
+    margin-left:50px;
+    h2 {
+      margin-bottom:0;
+    }
+    h3 {
+      margin-bottom:0;
+      margin-top:5px;
+    }
+  }
+}

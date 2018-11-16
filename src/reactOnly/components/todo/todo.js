@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../scss/todo.scss';
 
 export default class ToDo extends React.Component {
     constructor(props) {

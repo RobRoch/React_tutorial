@@ -1,6 +1,6 @@
 /* eslint no-eval: 0 */
 import React from 'react';
-import '../../scss/calculator.scss';
+
 
 export default class Calculator extends React.Component {
     constructor(props) {

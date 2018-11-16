@@ -10,7 +10,7 @@ import ReactRedux from './reactRedux.js';
 
 import storeSecond from './reactReduxSecond/store.js';
 import ReactReduxSecond from './reactReduxSecond.js';
-
+import './scss/style.scss';
 
 ReactDOM.render(
     <SimpleReact />,
