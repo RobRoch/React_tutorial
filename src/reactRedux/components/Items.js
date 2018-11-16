@@ -1,7 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { createList } from '../helpers/createItemsList'
 import * as actions from '../actions/storeItems'
+
+const createList = (arr) => {
+  return arr.map(item=>
+      <div key={item.id} className='item'>
+        <p className='item__remove'>Usuń</p>
+        <p className='item__title'>id:{item.id} | {item.title}</p>
+        <p className='item__cost'>{item.cost} zł</p>
+        <p><button className='item__button'>Kup</button> - zostało {item.count}</p>
+      </div>
+      )
+}
 
 export class Items extends Component {
   

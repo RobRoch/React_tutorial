@@ -1,6 +1,5 @@
 const initialState = {
-    userItems: [],
-    bill: 0,
+
 }
 
 export default (state = initialState, { type, payload }) => {

@@ -1,9 +1,7 @@
 import { combineReducers } from "redux"
 
-import stockItems from "./stockItemsReducer"
-import userItems from "./userItemsReducer"
+import stockItems from "./storeItemsReducer"
 
 export default combineReducers({
-    stockItems,
-    userItems,
+    stockItems
 })
