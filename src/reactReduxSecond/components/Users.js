@@ -14,8 +14,17 @@ export class Users extends Component {
   isError = (err) => {
     return err ? <h3>Error: {err}</h3> : '';
   }
+
   render() {
-    const users = this.props.users.slice(0,this.props.count).map(user => <div>{user.id}</div>)
+    const slice = this.props.count >= 0 ? this.props.count : 0;
+    const users = this.props.users.slice(0,slice).map(user => 
+      <div key={user.id} className='user'>
+        <img className='user__image' src={user.avatar_url} alt={user.login}></img>
+        <h4 className='user__title'>{user.id} : {user.login}</h4>
+        <a href={user.html_url} target="_blank" rel="noopener noreferrer"><button className='user__button'>Profile</button></a>
+      </div>
+    );
+
     return (
       <div className='users__part part'>
         <h2>Here will be fetched Users</h2>

@@ -18,22 +18,19 @@ export const fetchUsersSuccess = (users) => ({
   payload : {users}
 })
 
-// export const fetchUsers = (dispatch) => {
-//   dispatch({type:"HAHAH"})
-// }
-
-export function fetchUsers() {
+export const fetchUsers = () => {
   return dispatch => {
     dispatch(fetchUsersStart());
-    
-    axios.get('https://api.github.com/users')
+    axios.get('https://api.github.com/users?per_page=8')
       .then((res) => {
         setTimeout(() => {
           dispatch(fetchUsersSuccess(res.data));
-        }, 1);
+        }, 2000);
       })
       .catch((err) => {
-        dispatch(fetchUsersError(err));
+        /* err.response gives undefined? */
+        console.log(err);
+        dispatch(fetchUsersError('Error happened!'));
       })
   };
 }
