@@ -1,35 +1,30 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../actions/cartItems'
-
-const createCartList = (arr,remove) => {
-  return arr.map(item=>
-      <div key={item.id} className='item'>
-        <div className='item__wrapper'>
-          <div className='item__spec'>
-              <p className='item__title'>id:{item.id} | {item.title}</p>
-              <p className='item__cost'>{item.cost} zł</p>
-              <p><button className='item__button'>Dodaj</button><button className='item__button' >Odejmij</button></p>
-          </div>
-          <div className='item__count'>
-              <p>Ilość</p>
-              <p>{item.cartCount}</p>
-          </div>
-        </div>
-      </div>
-    )
-}
-
+import {removeItemFromCart, addItemToCart} from '../actions/itemsAction'
 
 export class Cart extends Component {
 
-  removeFromCart = (e) => {
-    this.props.removeFromCart(e);
+  createCartList = (arr) => {
+    return arr.map(item=>
+        <div key={item.id} className='item'>
+          <div className='item__wrapper'>
+            <div className='item__spec'>
+                <p className='item__title'>id:{item.id} | {item.title}</p>
+                <p className='item__cost'>{item.cost} zł</p>
+                <p><button className='item__button'  onClick={() => {this.props.addItemToCart(item.id)}}>Dodaj</button><button className='item__button' onClick={() => {this.props.removeItemFromCart(item.id)}}>Odejmij</button></p>
+            </div>
+            <div className='item__count'>
+                <p>Ilość</p>
+                <p>{item.cartCount}</p>
+            </div>
+          </div>
+        </div>
+      )
   }
 
   render() {
     
-    let cartItems = createCartList(this.props.cartItems, this.props.removeFromCart);
+    let cartItems = this.createCartList(this.props.cartItems);
     let sum = this.props.cartItems.reduce((total,amount)=> total + amount.cost*amount.cartCount
     ,0);
 
@@ -47,12 +42,12 @@ export class Cart extends Component {
 
 
 const mapStateToProps = (state) => ({
-  cartItems : state.stockItems.cartItems
+  cartItems : state.stockItems.items.filter(item => item.cartCount > 0)
 })
 
-const mapDispatchToProps = dispatch => ({
-    removeFromCart: (e) => dispatch(actions.removeItemFromCart(e))
-
-})
+const mapDispatchToProps = {
+    addItemToCart,
+    removeItemFromCart
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)

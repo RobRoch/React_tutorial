@@ -1,4 +1,4 @@
-import * as cart from '../actions/cartItems';
+import {REMOVE_ITEM_FROM_CART, ADD_ITEM_TO_CART} from '../actions/itemsAction';
 
 const mockStockItems = [
     {
@@ -76,9 +76,7 @@ const mockStockItems = [
 ]
 
 const initialState = {
-    normalItems: mockStockItems.filter(item => item.promo === false && item.count > 0),
-    promoItems: mockStockItems.filter(item => item.promo === true && item.count > 0),
-    cartItems: mockStockItems.filter(item => item.cartCount > 0),
+    items: mockStockItems
 }
 
 
@@ -86,10 +84,27 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
     switch (type) {
 
-        case cart.REMOVE_ONE_FROM_CART:
-            return { ...state, cartCount : payload }
+        case REMOVE_ITEM_FROM_CART: 
+           return {...state, items: changeItem(state.items,payload, '-')}
+
+        case ADD_ITEM_TO_CART: 
+           return {...state, items: changeItem(state.items,payload, '+')}
+
 
         default:
             return state
     }
+}
+
+function changeItem(state, payload, operator) {
+    return state.map((item) => {
+      if(item.id === payload) {
+        console.log(item.cartCount);
+        return {
+          ...item,  
+          cartCount: eval(item.cartCount + operator + 1),
+        }
+      }
+      return item;
+    });
 }

@@ -8,7 +8,7 @@ export class Counter extends Component {
     this.isBlocked = ''
   }
   count = (counter, maxLength) => {
-    let ixMax = (counter > maxLength);
+    let ixMax = (counter >= maxLength);
     let val =  this.props.fetched ? ixMax ? 'MAX' : counter : ixMax ? maxLength : counter;
     ixMax ? this.isBlocked = 'blocked'  : this.isBlocked = '';
     return val;
