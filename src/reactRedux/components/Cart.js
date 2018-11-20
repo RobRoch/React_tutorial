@@ -3,7 +3,10 @@ import { connect } from 'react-redux'
 import {removeItemFromCart, addItemToCart} from '../actions/itemsAction'
 
 export class Cart extends Component {
-
+  
+  isMoreItems = (id) => {
+    return id.count > 0 ? '' : 'disabled';
+  }
   createCartList = (arr) => {
     return arr.map(item=>
         <div key={item.id} className='item'>
@@ -11,7 +14,7 @@ export class Cart extends Component {
             <div className='item__spec'>
                 <p className='item__title'>id:{item.id} | {item.title}</p>
                 <p className='item__cost'>{item.cost} zł</p>
-                <p><button className='item__button'  onClick={() => {this.props.addItemToCart(item.id)}}>Dodaj</button><button className='item__button' onClick={() => {this.props.removeItemFromCart(item.id)}}>Odejmij</button></p>
+                <p><button className={'item__button ' + this.isMoreItems(item)} onClick={() => {this.props.addItemToCart(item.id)}}>Dodaj</button><button className='item__button' onClick={() => {this.props.removeItemFromCart(item.id)}}>Odejmij</button></p>
             </div>
             <div className='item__count'>
                 <p>Ilość</p>
@@ -46,8 +49,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-    addItemToCart,
-    removeItemFromCart
+  addItemToCart,
+  removeItemFromCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)

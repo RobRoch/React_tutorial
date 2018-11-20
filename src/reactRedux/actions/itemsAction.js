@@ -2,9 +2,9 @@ export const REMOVE_ITEM_FROM_STORE = 'REMOVE_ITEM_FROM_STORE';
 export const REMOVE_ITEM_FROM_CART = 'REMOVE_ITEM_FROM_CART';
 export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART';
 
-export const removeItemFromStore = () => ({
+export const removeItemFromStore = (id) => ({
   type: REMOVE_ITEM_FROM_STORE,
-  payload : 0
+  payload : id
 })
 
 export const removeItemFromCart = (id) => ({

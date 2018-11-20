@@ -1,4 +1,4 @@
-import {REMOVE_ITEM_FROM_CART, ADD_ITEM_TO_CART} from '../actions/itemsAction';
+import {REMOVE_ITEM_FROM_CART, ADD_ITEM_TO_CART, REMOVE_ITEM_FROM_STORE} from '../actions/itemsAction';
 
 const mockStockItems = [
     {
@@ -79,32 +79,56 @@ const initialState = {
     items: mockStockItems
 }
 
-
-
 export default (state = initialState, { type, payload }) => {
     switch (type) {
 
         case REMOVE_ITEM_FROM_CART: 
-           return {...state, items: changeItem(state.items,payload, '-')}
+           return {...state, items: removeItem(state.items,payload)}
 
         case ADD_ITEM_TO_CART: 
-           return {...state, items: changeItem(state.items,payload, '+')}
+           return {...state, items: addItem(state.items,payload)}
 
+        case REMOVE_ITEM_FROM_STORE: 
+           return {...state, items: removeItemFromStore(state.items,payload)}
 
         default:
             return state
     }
 }
 
-function changeItem(state, payload, operator) {
+function removeItem(state, payload) {
     return state.map((item) => {
       if(item.id === payload) {
-        console.log(item.cartCount);
+        
         return {
           ...item,  
-          cartCount: eval(item.cartCount + operator + 1),
+          cartCount: item.cartCount - 1,
+          count: item.count + 1,        
         }
       }
       return item;
     });
+}
+
+function addItem(state, payload) {
+    return state.map((item) => {
+      if(item.id === payload && item.count > 0) {
+        
+        return {
+          ...item,  
+          cartCount: item.cartCount + 1,
+          count: item.count - 1,        
+        }
+      }
+      return item;
+    });
+}
+
+function removeItemFromStore(state, payload) {
+    return state.filter((item) => {
+        if(item.id === payload) {
+            return false;
+        }
+        return true;
+    })
 }
